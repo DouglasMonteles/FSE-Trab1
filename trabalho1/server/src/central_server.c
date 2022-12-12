@@ -17,9 +17,6 @@ short create_server_socket(void) {
 int bind_created_socket(int new_socket, char* host, int port) {
 	int is_socket_bound = -1;
 	struct sockaddr_in remote = { 0 };
-
-	printf("%s\n", host);
-	printf("Aqui........\n");
 	
 	remote.sin_family = AF_INET; 													// Internet address family
 	remote.sin_addr.s_addr = inet_addr(host); 						// Any incoming interface
