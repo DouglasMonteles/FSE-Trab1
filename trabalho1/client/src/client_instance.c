@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
 	printf("\n");
 
 	//int socket = init_observer_tcp_ip_client_connection(host, port);
-	send_message_to_client(init_observer_tcp_ip_client_connection(host, port), host, port);
+	init_observer_tcp_ip_client_connection(host, port);
 	
 	return 0;
 }
