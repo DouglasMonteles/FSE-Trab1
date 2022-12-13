@@ -1,4 +1,5 @@
 #include "server_socket_tcp_ip.h"
+#include "led.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -85,6 +86,23 @@ void init_observer_tcp_ip_server_connection(char* host, int port) {
 		}
 
 		printf("[Info]: Client reply : %s\n", client_message);
+
+		printf("Comando [%s] recebido!\n", client_message);
+
+		switch (client_message[0]) {
+		case '1':
+			handle_led_config();
+			turn_on_or_off_led(LED_1);
+			break;
+
+		case '2':
+			handle_led_config();
+			turn_on_or_off_led(LED_2);
+			break;
+		
+		default:
+			break;
+		}
 
 		//if (strcmp(pMessage, client_message) == 0) {
     strcpy(message, "Hi there !");

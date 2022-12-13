@@ -11,5 +11,6 @@ void pin_config(void);
 short led_status(int led);
 void turn_on_or_off_led(int led);
 void handle_interrupt(int signal);
+void handle_led_config();
 
 #endif

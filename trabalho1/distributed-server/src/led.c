@@ -27,6 +27,14 @@ void handle_interrupt(int signal) {
   exit(0);
 }
 
+void handle_led_config() {
+  if (!bcm2835_init()) {
+    exit(1);
+  }
+
+  pin_config();
+}
+
 // int main(int argc, char **argv) {
 //   if (!bcm2835_init()) {
 //     exit(1);
