@@ -1,4 +1,0 @@
-#ifndef _DISTRIBUTED_SERVER_H_
-#define _DISTRIBUTED_SERVER_H_
-
-#endif

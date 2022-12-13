@@ -1,6 +1,6 @@
 CC := gcc
 CFLAGS := -std=c99
-LINKFLAGS := -lrt
+LINKFLAGS := -lrt -lbcm2835
 
 SUBDIRS := $(wildcard */.)
 
@@ -10,25 +10,24 @@ $(SUBDIRS):
 
 # Example: $ run-client ip=127.0.0.1 port=5555
 
-run-client:
-	client/bin/client $(ip) $(port)
+run-distr-server:
+	distributed-server/bin/distributed_server $(ip) $(port)
 
-run-server:
-	server/bin/server $(ip) $(port)
+run-local-distr-server:
+	distributed-server/bin/distributed_server 127.0.0.1 5000
 
-run-local-client:
-	client/bin/client 127.0.0.1 5000
+run-central-server:
+	central-server/bin/central_server $(ip) $(port)
 
-run-local-server:
-	server/bin/server 127.0.0.1 5000
+run-local-central-server:
+	central-server/bin/central_server 127.0.0.1 5000
 
 .PHONY: clean subdirs $(SUBDIRS)
-
 clean: 
-	# client
-	rm -rf client/obj/*
-	rm -rf client/bin/*
+	# central-server
+	rm -rf central-server/obj/*
+	rm -rf central-server/bin/*
 
-	# server
-	rm -rf server/obj/*
-	rm -rf server/bin/*
+	# distributed-server
+	rm -rf distributed-server/obj/*
+	rm -rf distributed-server/bin/*

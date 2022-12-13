@@ -8,17 +8,17 @@ SRCFOLDER := src/
 OBJFOLDER := obj/
 CC := gcc
 CFLAGS := -std=c99
-LINKFLAGS := -lrt
+LINKFLAGS := -lrt -lbcm2835
 SRCFILES := $(wildcard src/*.c)
 
 all: $(SRCFILES:src/%.c=obj/%.o)
-	$(CC) $(CFLAGS) obj/*.o -o bin/server $(LINKFLAGS)
+	$(CC) $(CFLAGS) obj/*.o -o bin/central_server $(LINKFLAGS)
 
 obj/%.o: src/%.c
 	$(CC) $(CFLAGS) -c $< -o $@ -I./inc $(LINKFLAGS)
 
-run: bin/server
-	bin/server
+run: bin/central_server
+	bin/central_server
 
 .PHONY: clean
 clean:
