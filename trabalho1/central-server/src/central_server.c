@@ -1,4 +1,5 @@
 #include "client_socket_tcp_ip.h"
+#include "menu.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,7 +15,12 @@ int main(int argc, char *argv[]) {
 	printf("\n");
 
 	//int socket = init_observer_tcp_ip_client_connection(host, port);
-	init_observer_tcp_ip_client_connection(host, port);
+	char option[20];
+
+	do {
+		menu(option);
+		init_observer_tcp_ip_client_connection(host, port, option);
+	} while (option[0] != '0');
 	// ----------------------------------------------------------------
 	
 	return 0;

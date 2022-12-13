@@ -73,8 +73,8 @@ void destroy_client_socket(int created_client_socket) {
 	shutdown(created_client_socket, 2);
 }
 
-void send_message_to_client(int created_client_socket, char* host, int port) {
-	char data_send_to_server[100] = { 0 };
+void send_message_to_client(int created_client_socket, char* host, int port, char* data_send_to_server) {
+	// char data_send_to_server[100] = { 0 };
 	char data_received_from_server[200] = { 0 };
 
 	int read_size;
@@ -85,9 +85,10 @@ void send_message_to_client(int created_client_socket, char* host, int port) {
 		exit(1);
 	}
 
-	printf("[Success]: Successfully connected with server\n");
-	printf("[Info]: Enter the Message: ");
-	fgets(data_send_to_server, sizeof(data_send_to_server), stdin);
+	printf("[Success]: Successfully connected with server\n\n");
+	// printf("[Info]: Enter the Message: ");
+
+	// fgets(data_send_to_server, sizeof(data_send_to_server), stdin);
 
 	// Send data to the server
 	send_data_through_socket(created_client_socket, data_send_to_server, strlen(data_send_to_server));
@@ -95,11 +96,11 @@ void send_message_to_client(int created_client_socket, char* host, int port) {
 	// Received the data from the server
 	read_size = receive_data_through_socket(created_client_socket, data_received_from_server, 200);
 	printf("[Info]: Server Response : %s\n\n", data_received_from_server);
-
+	
 	destroy_client_socket(created_client_socket);
 }
 
-int init_observer_tcp_ip_client_connection(char* host, int port) {
+int init_observer_tcp_ip_client_connection(char* host, int port, char* msg) {
 	int created_client_socket;
 	struct sockaddr_in server;
 
@@ -113,5 +114,5 @@ int init_observer_tcp_ip_client_connection(char* host, int port) {
 
 	printf("[Success]: Socket is created\n");
 
-	send_message_to_client(created_client_socket, host, port);
+	send_message_to_client(created_client_socket, host, port, msg);
 }
