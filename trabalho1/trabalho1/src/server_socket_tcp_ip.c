@@ -9,7 +9,6 @@
 #include "server_socket_tcp_ip.h"
 #include "config_params.h"
 #include "menu.h"
-#include "led.h"
 
 short create_server_socket(void) {
 	short new_socket;

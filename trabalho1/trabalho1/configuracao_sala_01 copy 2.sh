@@ -1,11 +1,11 @@
 # ip_servidor_central: 
-192.168.1.132
+192.168.0.53
 # porta_servidor_central: 
-10651
+10000
 # ip_servidor_distribuido: 
-192.168.1.132
+192.168.0.52
 # porta_servidor_distribuido: 
-10651
+10200
 # nome: 
 Sala_01
 # outputs:

@@ -1,6 +1,8 @@
 #ifndef _CLIENT_INSTANCE_H_
 #define _CLIENT_INSTANCE_H_
 
+#include "config_params.h"
+
 short create_client_socket(void);
 int connect_client_socket(int socket_created, char *host, int port);
 int send_data_through_socket(int socket_created, char *host_request, short size_request);

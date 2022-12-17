@@ -8,7 +8,7 @@ SRCFOLDER := src/
 OBJFOLDER := obj/
 CC := gcc
 CFLAGS := -std=c99
-LINKFLAGS := -lrt 
+LINKFLAGS := -lrt -lbcm2835
 SRCFILES := $(wildcard src/*.c)
 FILE=config_file.sh
 CONFIG_FILE=`grep "^[^\#*/;]" $(FILE)`

@@ -6,8 +6,8 @@
 #include <unistd.h>
 #include <sys/time.h>
 
-#include "client_socket_tcp_ip.h"
 #include "config_params.h"
+#include "client_socket_tcp_ip.h"
 
 // Create a Socket for server communication
 short create_client_socket(void) {

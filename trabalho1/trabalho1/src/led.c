@@ -9,20 +9,20 @@ void pin_config(int output) {
   bcm2835_gpio_fsel(output, BCM2835_GPIO_FSEL_OUTP);
 }
 
-short led_status(int led) {
-  return bcm2835_gpio_lev(led);
+short pin_status(int output) {
+  return bcm2835_gpio_lev(output);
 }
 
-void turn_on_or_off_led(int led) {
-  if (led_status(led) == HIGH) {
-    bcm2835_gpio_write(led, LOW);
+void turn_on_or_off_output(int output) {
+  if (pin_status(output) == HIGH) {
+    bcm2835_gpio_write(output, LOW);
   } else {
-    bcm2835_gpio_write(led, HIGH);
+    bcm2835_gpio_write(output, HIGH);
   }
 }
 
 void handle_interrupt(int signal) {
-  turn_on_or_off_led(0);
+  turn_on_or_off_output(0);
   bcm2835_close();
   exit(0);
 }
