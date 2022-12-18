@@ -62,7 +62,7 @@ int receive_data_through_socket(int socket_created, char *host_request, short re
 	}
 
 	is_data_received = recv(socket_created, host_request, request_size, 0);
-	printf("Response %s\n", host_request);
+	// printf("Response %s\n", host_request);
 
 	return is_data_received;
 }
@@ -76,7 +76,7 @@ void destroy_client_socket(int created_client_socket) {
 
 void send_message_to_client(int created_client_socket, char* host, int port, char* data_send_to_server, char* response) {
 	// char data_send_to_server[100] = { 0 };
-	char data_received_from_server[200] = { 0 };
+	char* data_received_from_server = malloc(sizeof(char) * 100);
 
 	int read_size;
 
@@ -96,10 +96,11 @@ void send_message_to_client(int created_client_socket, char* host, int port, cha
 
 	// Received the data from the server
 	read_size = receive_data_through_socket(created_client_socket, data_received_from_server, 200);
-	printf("[Info]: Server Response : %s\n\n", data_received_from_server);
 	strcpy(response, data_received_from_server);
+	printf("[Info]: %s\n\n", response);
 	
 	destroy_client_socket(created_client_socket);
+	free(data_received_from_server);
 }
 
 void init_observer_tcp_ip_client_connection(config_params* params, char* msg, char* response) {

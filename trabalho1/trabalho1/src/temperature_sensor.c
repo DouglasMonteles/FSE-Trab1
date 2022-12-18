@@ -14,7 +14,7 @@
 
 // static const unsigned short signal = 4;
 unsigned short data[5] = {0, 0, 0, 0, 0};
-char temp_data[50];
+char* temp_data;
 
 void config_wiring_pi() {
   // GPIO Initialization
@@ -88,11 +88,11 @@ short read_data(int signal) {
 }
 
 void to_string_temp(char* dest, float celsius, float humidity) {
-  char str_celsius[5];
-  char str_humidity[5];
+  char str_celsius[8];
+  char str_humidity[8];
       
-  gcvt(celsius, 5, str_celsius);
-  gcvt(humidity, 5, str_humidity);
+  snprintf(str_celsius, 8, "%6.2f", celsius);
+  snprintf(str_humidity, 8, "%6.2f", humidity);
 
   strcat(dest, "Temperatura: ");
   strcat(dest, str_celsius);
@@ -110,6 +110,8 @@ char* calc_temp(int signal) {
   config_wiring_pi();
 
   for (unsigned char i = 0; i < ATTEMPTS; i++) {
+    temp_data = malloc(sizeof(char) * 50);
+
 		pinMode(signal, OUTPUT);
 
 		// Send out start signal
@@ -145,7 +147,7 @@ char* calc_temp(int signal) {
 			// Display all data
 			// printf("TEMP: %6.2f *C | HUMI: %6.2f %\n\n", celsius, humidity);
       to_string_temp(temp_data, celsius, humidity);
-      
+
 			return temp_data;
 		} else {
 			printf("[Error]: Invalid Data. Try again...\n\n");
@@ -157,5 +159,6 @@ char* calc_temp(int signal) {
 		}
 
 		delay(2000);	// DHT22 average sensing period is 2 seconds
+    free(temp_data);
 	}
 }

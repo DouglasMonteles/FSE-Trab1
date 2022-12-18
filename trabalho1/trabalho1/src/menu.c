@@ -4,9 +4,11 @@
 #include "menu.h"
 #include "config_params.h"
 #include "led.h"
+#include "temperature_sensor.h"
 
-char str_response[10];
+char str_response[50];
 
+// Central server
 void menu(char *data_send_to_server) {
   // Led
   // handle_led_config();
@@ -18,6 +20,7 @@ void menu(char *data_send_to_server) {
   printf("[4] - Ligar/Desligar o Ar-Condicionado:\n");
   printf("[5] - Ligar/Desligar o Alarme (sirene / buzzer):\n");
   printf("[6] - Visualizar status dos sensores:\n");
+  printf("[7] - Visualizar temperatura:\n");
   printf("[0] - Finalizar o programa\n");
   printf("-------------------------------------------\n");
   printf("Informe o numero da opcao que voce deseja executar:\n");
@@ -26,6 +29,7 @@ void menu(char *data_send_to_server) {
   printf("Voce escolheu a opcao: [%s]\n", data_send_to_server);
 }
 
+// Distributed server
 char* menu_options(char opc, config_params* params) {
   char input_status[6];
   
@@ -59,6 +63,10 @@ char* menu_options(char opc, config_params* params) {
       }
 
       strcpy(str_response, input_status);
+      return str_response;
+
+    case '7':
+      strcpy(str_response, calc_temp(params->sensor_temperatura.gpio));
       return str_response;
 		
 		default:
