@@ -1,11 +1,11 @@
 # ip_servidor_central: 
-192.168.0.53
+192.168.1.146
 # porta_servidor_central: 
-10000
+10653
 # ip_servidor_distribuido: 
-192.168.0.52
+192.168.1.146
 # porta_servidor_distribuido: 
-10200
+10653
 # nome: 
 Sala_01
 # outputs:
@@ -14,72 +14,72 @@ lampada
 # tag: 
 Lampada_01
 # gpio: 
-18
+26
 # type: 
 lampada
 # tag: 
 Lâmpada_02
 # gpio: 
-23
+19
 # type: 
 projetor
 # tag: 
 Projetor_Multimidia
 # gpio: 
-25
+6
 # type: 
 ar_condicionado
 # tag: 
 Ar_Condicionado_1o_Andar
 # gpio: 
-24
+13
 # type: 
 alarme
 # tag: 
 Sirene_do_Alarme
 # gpio: 
-8
+5
 # inputs:
 # type: 
 presenca
 # tag: 
 Sensor_de_Presenca
 # gpio: 
-7
+0
 # type: 
 fumaca
 # tag: 
 Sensor_de_Fumaca
 # gpio: 
-1
+11
 # type: 
 janela
 # tag: 
 Sensor_de_Janela
 # gpio: 
-12
+9
 # type: 
 porta
 # tag: 
 Sensor_de_Porta
 # gpio: 
-16
+10
 # type: 
 contagem
 # tag: 
 Sensor_de_Contagem_de_Pessoas_Entrada
 # gpio: 
-20
+22
 # type: 
 contagem
 # tag: 
 Sensor_de_Contagem_de_Pessoas_Saida
 # gpio: 
-21
+27
 # sensor_temperatura:
 # type: 
 dth22
 # tag: 
 Sensor_de_Temperatura_e_Umidade
 # gpio: 
-4
+18
