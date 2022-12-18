@@ -84,13 +84,13 @@ void init_observer_tcp_ip_server_connection(config_params* params) {
 			break;
 		}
 
-		printf("[Info]: Client reply : %s\n", client_message);
+		// printf("[Info]: Client reply : %s\n", client_message);
 
 		printf("Comando [%s] recebido!\n", client_message);
 
-		menu_options(client_message[0], params);
+		char* response = menu_options(client_message[0], params);
 
-    strcpy(message, "Hi there !");
+    strcpy(message, response);
 
 		// Send some data
 		if (send(sock, message, strlen(message), 0) < 0) {

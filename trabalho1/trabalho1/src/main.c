@@ -24,10 +24,13 @@ int main(int argc, char** argv) {
 	if (type == 'c') { 
     // Central server
     char option[20];
+    char response[50];
 
     do {
       menu(option);
-      init_observer_tcp_ip_client_connection(params, option);
+      init_observer_tcp_ip_client_connection(params, option, response);
+
+      menu_status_inputs(response, params);
     } while (option[0] != '0');
   } else { 
     // Distributed server

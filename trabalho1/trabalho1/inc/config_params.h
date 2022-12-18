@@ -2,7 +2,7 @@
 #define _CONFIG_PARAMS_H_
 
 #define MAX_IP_LENGTH 16
-#define MAX_STR 20
+#define MAX_STR 60
 #define OUTPUT_LENGTH 5
 #define INPUT_LENGTH 6
 #define TAG_LENGTH 3 

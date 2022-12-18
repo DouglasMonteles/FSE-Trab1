@@ -4,6 +4,7 @@
 #include "config_params.h"
 
 void menu(char* data_send_to_server);
-void menu_options(char opc, config_params* params);
+char* menu_options(char opc, config_params* params);
+void menu_status_inputs(char* status, config_params* params);
 
 #endif
