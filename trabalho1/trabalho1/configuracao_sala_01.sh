@@ -1,9 +1,9 @@
 # ip_servidor_central: 
-192.168.1.132
+192.168.1.134
 # porta_servidor_central: 
 10652
 # ip_servidor_distribuido: 
-192.168.1.132
+192.168.1.134
 # porta_servidor_distribuido: 
 10652
 # nome: 

@@ -7,21 +7,29 @@
 #include "temperature_sensor.h"
 
 char str_response[50];
+int room;
+char ips[4][20] = {
+  "192.168.1.134", 
+  "192.168.1.146", 
+  "192.168.1.132", 
+  "192.168.1.129"
+};
 
 // Central server
-void menu(char *data_send_to_server) {
+void menu(config_params* params, char *data_send_to_server) {
   // Led
   // handle_led_config();
+  printf("Informe o numero da sala [1] | [2] | [3] | [4] (apenas o numero): \n");
+  scanf("%d", &room);
 
-  printf("-------------------MENU--------------------\n");
-  printf("[1] - Acender/Apagar a Lampada 1 da Sala 1:\n");
-  printf("[2] - Acender/Apagar a Lampada 2 da Sala 1:\n");
-  printf("[3] - Ligar/Desligar o Projetor Multimidia:\n");
-  printf("[4] - Ligar/Desligar o Ar-Condicionado:\n");
-  printf("[5] - Ligar/Desligar o Alarme (sirene / buzzer):\n");
-  printf("[6] - Visualizar status dos sensores:\n");
-  printf("[7] - Visualizar temperatura:\n");
-  printf("[0] - Finalizar o programa\n");
+  strcpy(params->ip_servidor_central, ips[room-1]);
+
+  printf("\n-------------------MENU--------------------\n");
+  
+  for (int i = 0; i < MAX_OPTIONS; i++) {
+    printf("[%d]: %s\n", (i+1), menu_opts[i]);
+  }
+
   printf("-------------------------------------------\n");
   printf("Informe o numero da opcao que voce deseja executar:\n");
 
@@ -32,8 +40,7 @@ void menu(char *data_send_to_server) {
 // Distributed server
 char* menu_options(char opc, config_params* params) {
   char input_status[6];
-  
-  handle_led_config(params);
+  char aux[10];
 
   switch (opc) {
 		case '1':
@@ -67,6 +74,13 @@ char* menu_options(char opc, config_params* params) {
 
     case '7':
       strcpy(str_response, calc_temp(params->sensor_temperatura.gpio));
+      return str_response;
+
+    case '8':
+      str_response[0] = '\0';
+      snprintf(aux, 10, "%d", occupation_quantity);
+      strcat(str_response, "Ocupacao da sala: ");
+      strcat(str_response, aux);
       return str_response;
 		
 		default:
