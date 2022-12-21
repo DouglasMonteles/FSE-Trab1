@@ -56,3 +56,7 @@ make run-central-server FILE=configuracao_sala_04.sh
 ```
 
 Depois disso, o servidor central irá exibir um menu com as salas disponíveis e suas respectivas funcionalidades.
+
+## Apresentação
+
+<iframe width="1353" height="480" src="https://www.youtube.com/embed/j9pywNtLwbA" title="Apresentação FSE - Trabalho 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
