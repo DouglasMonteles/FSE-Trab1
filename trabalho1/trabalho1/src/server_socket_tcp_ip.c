@@ -30,7 +30,7 @@ int bind_created_socket(int new_socket, char* host, int port) {
 	return is_socket_bound;
 }
 
-void init_observer_tcp_ip_server_connection(config_params* params) {
+void init_observer_tcp_ip_server_connection(config_params* params, char* qtd) {
 	struct sockaddr_in server, client;
 
 	int socket_created, sock, client_msg_size, read_size;
@@ -90,7 +90,13 @@ void init_observer_tcp_ip_server_connection(config_params* params) {
 
 		char* response = menu_options(client_message[0], params);
 
-    strcpy(message, response);
+		if (client_message[0] == '8') {
+			message[0] = '\0';
+			strcat(message, "Quantidade de pessoas: ");
+			strcat(message, qtd);	
+		} else {
+  	  strcpy(message, response);
+		}
 
 		// Send some data
 		if (send(sock, message, strlen(message), 0) < 0) {

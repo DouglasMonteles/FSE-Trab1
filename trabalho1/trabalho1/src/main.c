@@ -13,34 +13,27 @@
 #include "log.h"
 #include "sensor_entrance_exit.h"
 #include "led.h"
+
+static char occupation[8];
   
 void* set_increment(void* arg) {
-  printf("[Info]: Contando a entrada e saida...");
-  
-  // int occupation_quantity = *(int*) arg;
-  // pthread_detach(pthread_self());
-
   while (1) {
     // Entrance sensor
     if (pin_status(pin_in)) {
       occupation_quantity++;
-      // printf("Entrada: %d\n", occupation_quantity);
     }
 
     if (pin_status(pin_out)) {
       if (occupation_quantity > 0)
         occupation_quantity--;
-      // printf("Saida: %d\n", occupation_quantity);
     }
 
-    // occupation = occupation_quantity;
-    printf("[Info]: Ocupacao: %d\n", occupation_quantity);
+    snprintf(occupation, 8, "%d", occupation_quantity);
 
     struct timespec tim, tim2;
     tim.tv_sec = 0;
     tim.tv_nsec = 300000000L;
     nanosleep(&tim , &tim2); // 300ms
-
   }
   
   pthread_exit(NULL);
@@ -93,7 +86,7 @@ int main(int argc, char** argv) {
     pthread_t ptid1;
 
     pthread_create(&ptid1, NULL, &set_increment, NULL);
-    init_observer_tcp_ip_server_connection(params);
+    init_observer_tcp_ip_server_connection(params, occupation);
     pthread_join(ptid1, NULL);
 
     pthread_exit(NULL);
