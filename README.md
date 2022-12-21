@@ -6,10 +6,11 @@
 
 - Clonar este projeto dentro de uma Raspberry PI;
 - Possuir a lib `bcm2835` e `lwiringPi` instaladas;
+- Entre no diretório: `trabalho1`
 
 ### Compilação
 
-- Utilize o `make` para compilar o projeto executando o seguinte comando na raiz do projeto:
+- Utilize o `make` para compilar o projeto executando o seguinte comando dentro do diretório `trabalho1` do projeto:
 
 ```bash
 # Elimina os binários de compilações anteriores
