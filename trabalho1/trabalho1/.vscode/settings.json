@@ -1,7 +1,0 @@
-{
-  "files.associations": {
-    "stdio.h": "c",
-    "menu.h": "c",
-    "config_params.h": "c"
-  }
-}
